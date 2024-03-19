@@ -8,9 +8,11 @@ function App() {
       <h4>Goncharuk Nikita</h4>
       <h4>Barnabishvili Robert!!!!!!!!!</h4>
       <h4>Vasyl Verbytskiy</h4>
-      <h4>Xlussov</h4>
+      <h2>Xlussov - Front-end developer</h2>
       <h4>Yurii Stepaniuk</h4>
       <h4>Iryna Khylchuk</h4>
+
+
       </>
    )
   
