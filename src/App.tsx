@@ -10,6 +10,7 @@ function App() {
       <h4>Vasyl Verbytskiy</h4>
       <h2>Xlussov</h2>
       <h4>Yurii Stepaniuk</h4>
+      <h4>Iryna Khylchuk</h4>
       </>
    )
   
