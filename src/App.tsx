@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <h1>Team work</h1>
+      <h2>Xlussov</h2>
     </>
   )
 }
