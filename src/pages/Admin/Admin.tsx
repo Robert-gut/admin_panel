@@ -3,7 +3,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 
 function Admin() {
   return (
-    <Box sx={{flexGrow: 1}}>
+    <Box sx={{flex: 1}}>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Sidebar />
