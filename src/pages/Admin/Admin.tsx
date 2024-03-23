@@ -1,5 +1,6 @@
 import { Box, Grid } from "@mui/material";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Sidebar/Header";
 
 function Admin() {
   return (
@@ -9,6 +10,7 @@ function Admin() {
           <Sidebar />
         </Grid>
         <Grid item xs={9}>
+          <Header />
           <h1>Admin</h1>
         </Grid>
       </Grid>
