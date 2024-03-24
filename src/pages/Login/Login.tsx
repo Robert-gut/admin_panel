@@ -3,10 +3,11 @@ import { ColorBlock } from '../../components/ColorBlock/ColorBlock';
 import { Alert, Avatar, CircularProgress, Grid, Snackbar } from '@mui/material';
 import { Form, Formik, FormikHelpers } from 'formik';
 import * as yup from 'yup';
-import { useNavigate } from 'react-router-dom';
-import { ColorButton, avatarStyles, stBoxLogin, stContainerLogin } from '../../components/Types/sx';
+import { Link, useNavigate } from 'react-router-dom';
+import { ColorButton, avatarStylesUser, linkStyles, stBoxLogin, stContainerLogin } from '../../components/Types/sx';
 import { IUser } from '../../components/Types/interface';
 import { CustomInput } from '../../components/CustomInput/CustomInput'
+import { Color, ColorHover } from '../../components/Types/enum';
 
 
 export const Login = () => {
@@ -61,13 +62,15 @@ export const Login = () => {
       }
    }
 
+
+
    return (
       <div>
          <ColorBlock containerChild={<h2>Sign in</h2>} yourStyleBox={stBoxLogin} yourStyleContainer={stContainerLogin} boxChildren={
             <div>
                <Grid container justifyContent="center" alignItems="center">
                   <Avatar
-                     style={avatarStyles}
+                     style={avatarStylesUser}
                      src="/broken-image.jpg"
                   />
                </Grid>
@@ -76,7 +79,8 @@ export const Login = () => {
                      <Form>
                         <CustomInput name="email" label="Email" />
                         <CustomInput name="password" label="Password" type="password" />
-                        <ColorButton type="submit" variant="contained" disabled={props.isSubmitting}>
+                        <ColorButton typecolor={Color.Blue} typecolorhover={ColorHover.Blue} type="submit" variant="contained" disabled={props.isSubmitting}>
+
                            {props.isSubmitting ? (
                               <>
                                  <CircularProgress size={24} color="inherit" style={{ marginRight: '8px' }} />
@@ -87,6 +91,7 @@ export const Login = () => {
                      </Form>
                   )}
                </Formik>
+               <Link style={linkStyles} to='/reset-password'>Reset your password?</Link>
             </div>
          } />
          <div>

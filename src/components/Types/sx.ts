@@ -1,6 +1,6 @@
-import { Button, ButtonProps, styled } from "@mui/material";
+import { Button, styled } from "@mui/material";
 import { Color } from "./enum"
-
+import { ColorButtonProps } from "./interface";
 
 export const styleBox = {
    // 'width': '50%',
@@ -28,8 +28,16 @@ export const styleContainer = {
 }
 
 
-export const avatarStyles = {
+export const avatarStylesUser = {
    backgroundColor: Color.Blue,
+   width: '70px',
+   height: '70px',
+   marginBottom: '20px',
+   marginTop: '-30px',
+   boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset'
+};
+export const avatarStylesResetPassword = {
+   backgroundColor: Color.Brown,
    width: '70px',
    height: '70px',
    marginBottom: '20px',
@@ -38,12 +46,13 @@ export const avatarStyles = {
 };
 
 
-export const ColorButton = styled(Button)<ButtonProps>(() => ({
-   backgroundColor: Color.Blue,
-   marginTop: '55px',
+
+export const ColorButton = styled(Button)<ColorButtonProps>(({ typecolor, typecolorhover }) => ({
+   backgroundColor: typecolor,
+   margin: '25px 0',
    fontWeight: '600',
    '&:hover': {
-      backgroundColor: Color.Blue,
+      backgroundColor: typecolorhover,
    },
 }));
 
@@ -57,4 +66,14 @@ export const stBoxResetPassword = {
 
 export const stContainerLogin = {
    'backgroundColor': Color.Blue
+};
+
+
+export const linkStyles = {
+   margin: '25px 0',
+   color: Color.Silver,
+   textDecoration: 'none',
+   '&:hover': {
+      backgroundColor: 'black',
+   },
 };

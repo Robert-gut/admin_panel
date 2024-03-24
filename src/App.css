@@ -1,12 +1,13 @@
 .MuiFormHelperText-root {
    color: brown !important;
+
 }
 
 .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root {
    font-size: large !important;
-   color: #0fb7cb !important;
+   color: #585858 !important;
 }
 
 .css-953pxc-MuiInputBase-root-MuiInput-root::after {
-   border-bottom: 2px solid #0fb7cb !important;
+   border-bottom: 2px solid #585858 !important;
 }
