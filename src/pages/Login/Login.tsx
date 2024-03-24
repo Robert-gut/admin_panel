@@ -60,7 +60,7 @@ export const Login = () => {
 
    return (
       <div>
-         <ColorBlock boxChildren={
+         <ColorBlock containerChild={<h2>Sign in</h2>} yourStyleBox={stBox} yourStyleContainer={stContainer} boxChildren={
             <div>
                <Grid container justifyContent="center" alignItems="center">
                   <Avatar
@@ -85,7 +85,7 @@ export const Login = () => {
                   )}
                </Formik>
             </div>
-         } containerChild={<h2>Sign in</h2>} yourStyleBox={stBox} yourStyleContainer={stContainer} />
+         } />
          <div>
             <Snackbar open={snackbarData.open} autoHideDuration={2000} onClose={handleClose}>
                <Alert
