@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Admin from './pages/Admin/Admin'
 import { Login } from './pages/Login/Login'
 import { ResetPassword } from './pages/Reset-password/Reset-password'
+import NotFound from './pages/Admin/notFound/notFound'
 
 function App() {
    return (
@@ -11,11 +12,10 @@ function App() {
             <Route path='/admin' element={<Admin />} />
             <Route path='/logIn' element={<Login />} />//! log in
             <Route path='/reset-password' element={<ResetPassword />} />
-            <Route path='*' element={<Admin />} />//! not found
+            <Route path='*' element={<NotFound />} />//! not found
          </Routes>
       </Router>
    )
 }
-``
-export default App
 
+export default App
