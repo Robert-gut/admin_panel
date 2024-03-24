@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ColorBlock } from '../../components/ColorBlock/ColorBlock';
-import { Color } from '../../components/Types/enum';
-import { Alert, Button, ButtonProps, Snackbar, TextField, styled } from '@mui/material';
-import { useFormik } from 'formik';
+import { Alert, Avatar, CircularProgress, Grid, Snackbar } from '@mui/material';
+import { Form, Formik, FormikHelpers } from 'formik';
 import * as yup from 'yup';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { ColorButton, avatarStyles, stBox, stContainer } from '../../components/Types/sx';
+import { IUser } from '../../components/Types/interface';
+import { CustomInput } from '../../components/CustomInput/CustomInput'
 
-interface IUser {
-   email: string;
-   password: string;
-};
 
-export const Login: React.FC = () => {
+export const Login = () => {
    const navigate = useNavigate()
 
    const [snackbarData, setSnackbarData] = useState<{ open: boolean, error: boolean }>({ open: false, error: false });
@@ -21,28 +18,10 @@ export const Login: React.FC = () => {
       setSnackbarData({ ...snackbarData, open: false });
    };
 
-   const loginUser = async (email: string, password: string): Promise<boolean> => {
-      const isValidUser = users.some(user => user.email === email && user.password === password);
-      return isValidUser;
+   const initialValues: IUser = {
+      email: '',
+      password: '',
    }
-
-   const stBox = {
-      width: '30%',
-      fontFamily: 'Open Sans'
-   };
-
-   const stContainer = {
-      'backgroundColor': Color.Blue
-   };
-
-   const ColorButton = styled(Button)<ButtonProps>(() => ({
-      backgroundColor: Color.Blue,
-      marginTop: '55px',
-      fontWeight: '600',
-      '&:hover': {
-         backgroundColor: Color.Blue,
-      },
-   }));
 
    const validationSchema = yup.object({
       email: yup.string().email('Invalid email format').required('Email is required'),
@@ -51,66 +30,61 @@ export const Login: React.FC = () => {
          .min(6, 'Password must be at least 6 characters long')
          .matches(/[a-zA-Z]/, 'Password must contain at least one letter'),
    })
-
-   const formik = useFormik({
-      initialValues: {
-         email: '',
-         password: '',
-      },
-      validationSchema: validationSchema,
-      onSubmit: async (values) => {
-         try {
-            console.log(values);
-            const isLogin = await loginUser(values.email, values.password);
-            if (isLogin) {
-               setSnackbarData({ open: true, error: false });
-            } else {
-               setSnackbarData({ open: true, error: true });
-            }
-         } catch (error) {
-            console.error('Error while trying to login:', error);
-         }
-      },
-   });
-
    const users: IUser[] = [
       { email: 'user1@example.com', password: 'password1' },
       { email: 'user2@example.com', password: 'password2' }
    ];
 
+   const onSubmit = (values: IUser, props: FormikHelpers<IUser>): void => {
+      try {
+         const userExists = users.find(user => user.email === values.email && user.password === values.password);
+         if (userExists) {
+            setSnackbarData({ open: true, error: false });
+            setTimeout(() => {
+               navigate('/admin')
+            }, 3000);
+         } else {
+            setSnackbarData({ open: true, error: true });
+         }
+         console.log('✌️values --->', values);
+         setTimeout(() => {
+            props.resetForm();
+            props.setSubmitting(false);
+         }, 1200);
+      } catch (error) {
+         console.error('Помилка під час обробки форми:', error);
+      }
+   }
+
+
+
    return (
       <div>
          <ColorBlock boxChildren={
-            <form onSubmit={formik.handleSubmit}>
-               <TextField
-                  fullWidth
-                  id="email"
-                  name="email"
-                  label="Email"
-                  onChange={formik.handleChange}
-                  error={formik.touched.email && Boolean(formik.errors.email)}
-                  helperText={formik.touched.email && formik.errors.email}
-                  margin="normal"
-                  variant="standard"
-                  autoComplete="off" // Disable autocomplete
-               />
-               <TextField
-                  fullWidth
-                  id="password"
-                  name="password"
-                  label="Password"
-                  type='password'
-                  onChange={formik.handleChange}
-                  error={formik.touched.password && Boolean(formik.errors.password)}
-                  helperText={formik.touched.password && formik.errors.password}
-                  variant="standard"
-                  margin="normal"
-                  autoComplete="off" // Disable autocomplete
-               />
-               <ColorButton type="submit" variant="contained" color="primary">
-                  Sign in
-               </ColorButton>
-            </form>
+            <div>
+               <Grid container justifyContent="center" alignItems="center">
+                  <Avatar
+                     style={avatarStyles}
+                     src="/broken-image.jpg"
+                  />
+               </Grid>
+               <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+                  {(props) => (
+                     <Form>
+                        <CustomInput name="email" label="Email" />
+                        <CustomInput name="password" label="Password" type="password" />
+                        <ColorButton type="submit" variant="contained" disabled={props.isSubmitting}>
+                           {props.isSubmitting ? (
+                              <>
+                                 <CircularProgress size={24} color="inherit" style={{ marginRight: '8px' }} />
+                                 Loading
+                              </>
+                           ) : 'Sign in'}
+                        </ColorButton>
+                     </Form>
+                  )}
+               </Formik>
+            </div>
          } containerChild={<h2>Sign in</h2>} yourStyleBox={stBox} yourStyleContainer={stContainer} />
          <div>
             <Snackbar open={snackbarData.open} autoHideDuration={2000} onClose={handleClose}>

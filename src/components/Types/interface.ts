@@ -4,3 +4,8 @@ export interface childrenProps {
    yourStyleBox?: React.CSSProperties;
    yourStyleContainer?: React.CSSProperties;
 }
+
+export interface IUser {
+   email: string;
+   password: string;
+}

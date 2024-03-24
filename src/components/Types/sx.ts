@@ -1,3 +1,4 @@
+import { Button, ButtonProps, styled } from "@mui/material";
 import { Color } from "./enum"
 
 
@@ -24,3 +25,33 @@ export const styleContainer = {
    'position': 'relative',
    'bottom': '65px'
 }
+
+
+export const avatarStyles = {
+   backgroundColor: Color.Blue,
+   width: '70px',
+   height: '70px',
+   marginBottom: '20px',
+   marginTop: '-30px',
+   boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset'
+};
+
+
+export const ColorButton = styled(Button)<ButtonProps>(() => ({
+   backgroundColor: Color.Blue,
+   marginTop: '55px',
+   fontWeight: '600',
+   '&:hover': {
+      backgroundColor: Color.Blue,
+   },
+}));
+
+
+export const stBox = {
+   width: '30%',
+   fontFamily: 'Open Sans'
+};
+
+export const stContainer = {
+   'backgroundColor': Color.Blue
+};
