@@ -12,6 +12,7 @@ export const styleBox = {
    'backgroundColor': Color.White,
    'padding': '30px',
    'borderRadius': '10px',
+   'fontFamily': 'Open Sans'
 }
 
 export const styleContainer = {
@@ -47,11 +48,13 @@ export const ColorButton = styled(Button)<ButtonProps>(() => ({
 }));
 
 
-export const stBox = {
+export const stBoxLogin = {
    width: '30%',
-   fontFamily: 'Open Sans'
+};
+export const stBoxResetPassword = {
+   width: '40%',
 };
 
-export const stContainer = {
+export const stContainerLogin = {
    'backgroundColor': Color.Blue
 };

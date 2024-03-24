@@ -4,7 +4,7 @@ import { Alert, Avatar, CircularProgress, Grid, Snackbar } from '@mui/material';
 import { Form, Formik, FormikHelpers } from 'formik';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { ColorButton, avatarStyles, stBox, stContainer } from '../../components/Types/sx';
+import { ColorButton, avatarStyles, stBoxLogin, stContainerLogin } from '../../components/Types/sx';
 import { IUser } from '../../components/Types/interface';
 import { CustomInput } from '../../components/CustomInput/CustomInput'
 
@@ -12,17 +12,20 @@ import { CustomInput } from '../../components/CustomInput/CustomInput'
 export const Login = () => {
    const navigate = useNavigate()
 
+   //* Снейкбар 
    const [snackbarData, setSnackbarData] = useState<{ open: boolean, error: boolean }>({ open: false, error: false });
 
    const handleClose = () => {
       setSnackbarData({ ...snackbarData, open: false });
    };
 
+
    const initialValues: IUser = {
       email: '',
       password: '',
    }
 
+   //* валідація
    const validationSchema = yup.object({
       email: yup.string().email('Invalid email format').required('Email is required'),
       password: yup.string()
@@ -30,11 +33,13 @@ export const Login = () => {
          .min(6, 'Password must be at least 6 characters long')
          .matches(/[a-zA-Z]/, 'Password must contain at least one letter'),
    })
+
    const users: IUser[] = [
       { email: 'user1@example.com', password: 'password1' },
       { email: 'user2@example.com', password: 'password2' }
    ];
 
+   //* перевірка користувача
    const onSubmit = (values: IUser, props: FormikHelpers<IUser>): void => {
       try {
          const userExists = users.find(user => user.email === values.email && user.password === values.password);
@@ -56,11 +61,9 @@ export const Login = () => {
       }
    }
 
-
-
    return (
       <div>
-         <ColorBlock containerChild={<h2>Sign in</h2>} yourStyleBox={stBox} yourStyleContainer={stContainer} boxChildren={
+         <ColorBlock containerChild={<h2>Sign in</h2>} yourStyleBox={stBoxLogin} yourStyleContainer={stContainerLogin} boxChildren={
             <div>
                <Grid container justifyContent="center" alignItems="center">
                   <Avatar
