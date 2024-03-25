@@ -1,10 +1,10 @@
 import styles from './notFound.module.scss'
 
-import {Link} from 'react-router-dom'
-import Astronaut from '../../../img/NotFound/Astronaut.svg'
-import star from '../../../img/NotFound/star.svg'
-import rock1 from '../../../img/NotFound/rock1.svg'
-import rock2 from '../../../img/NotFound/rock2.svg'
+import { Link } from 'react-router-dom'
+import Astronaut from '../../img/NotFound/Astronaut.svg'
+import star from '../../img/NotFound/star.svg'
+import rock1 from '../../img/NotFound/rock1.svg'
+import rock2 from '../../img/NotFound/rock2.svg'
 
 const NotFound = () => {
    return (
@@ -15,13 +15,9 @@ const NotFound = () => {
                   <h1>404-error</h1>
                   <h2>PAGE NOT FOUND</h2>
                   <p>Your search has ventured beyond the known universe.</p>
-                  <div className={styles.btnWrap}>
-                     <div className={styles.btn}>
-                        <Link className={styles.link} to='/admin'>
-                           Back To Home
-                        </Link>
-                     </div>
-                  </div>
+                  <Link className={styles.btn} to='/admin'>
+                     Back To Home
+                  </Link>
                </div>
                <div className={styles.notFound__astronaut}>
                   <img className={styles.astronaut} src={Astronaut} alt='Astronaut' />

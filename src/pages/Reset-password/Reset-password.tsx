@@ -1,12 +1,12 @@
 import { Form, Formik, FormikHelpers } from "formik"
 import { ColorBlock } from "../../components/ColorBlock/ColorBlock"
-import { ColorButton, avatarStylesResetPassword, linkStyles, stBoxResetPassword } from "../../components/Types/sx"
+import { ColorButton, avatarStylesResetPassword, linkStyles, stBoxResetPassword } from "../../Types/sx"
 import { CustomInput } from "../../components/CustomInput/CustomInput"
 import { Alert, Avatar, CircularProgress, Grid, Snackbar } from "@mui/material"
-import { IUser } from "../../components/Types/interface"
+import { IUser } from "../../Types/interface"
 import { useNavigate } from "react-router"
 import { useState } from "react"
-import { Color, ColorHover } from "../../components/Types/enum"
+import { Color, ColorHover } from "../../Types/enum"
 import * as yup from 'yup';
 import LockResetIcon from '@mui/icons-material/LockReset';
 import { Link } from "react-router-dom"

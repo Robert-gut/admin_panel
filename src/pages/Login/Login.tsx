@@ -4,15 +4,15 @@ import { Alert, Avatar, CircularProgress, Grid, Snackbar } from '@mui/material';
 import { Form, Formik, FormikHelpers } from 'formik';
 import * as yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
-import { ColorButton, avatarStylesUser, linkStyles, stBoxLogin, stContainerLogin } from '../../components/Types/sx';
-import { IUser } from '../../components/Types/interface';
+import { ColorButton, avatarStylesUser, linkStyles, stBoxLogin, stContainerLogin } from '../../Types/sx';
+import { IUser } from '../../Types/interface';
 import { CustomInput } from '../../components/CustomInput/CustomInput'
-import { Color, ColorHover } from '../../components/Types/enum';
+import { Color, ColorHover } from '../../Types/enum';
 
 
 export const Login = () => {
    const navigate = useNavigate()
-
+   const [counter, setCounter] = useState(0)
    //* Снейкбар 
    const [snackbarData, setSnackbarData] = useState<{ open: boolean, error: boolean }>({ open: false, error: false });
 
@@ -40,6 +40,7 @@ export const Login = () => {
       { email: 'user2@example.com', password: 'password2' }
    ];
 
+
    //* перевірка користувача
    const onSubmit = (values: IUser, props: FormikHelpers<IUser>): void => {
       try {
@@ -51,6 +52,12 @@ export const Login = () => {
             }, 3000);
          } else {
             setSnackbarData({ open: true, error: true });
+            console.log(1);
+            setCounter(prev => prev + 1)
+            console.log('✌️setCounter --->', counter);
+            if (counter === 3) {
+               navigate('/reset-password')
+            }
          }
          console.log('✌️values --->', values);
          setTimeout(() => {
