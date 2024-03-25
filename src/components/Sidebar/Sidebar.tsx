@@ -19,7 +19,7 @@ import ArticleIcon from '@mui/icons-material/Article'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import LanguageIcon from '@mui/icons-material/Language'
-import UnarchiveIcon from '@mui/icons-material/Unarchive';
+import UnarchiveIcon from '@mui/icons-material/Unarchive'
 
 const data = [
    {icon: <DashboardIcon />, label: 'Dashboard', path: '/admin'},
@@ -90,7 +90,7 @@ export default function Sidebar() {
                               borderRadius: '4px',
                               padding: '8px 24px',
                               color: 'white',
-                              
+
                               '&:focus': {backgroundColor: '#00acc1'},
                               '&:active': {backgroundColor: '#00acc1'},
                            }}
@@ -100,32 +100,28 @@ export default function Sidebar() {
                         </ListItemButton>
                      </Link>
                   ))}
-                  
                </Box>
-               
             </FireNav>
-            <Link to={'/upgrade'} style={{textDecoration: 'none', color: 'inherit', position: 'absolute', bottom: '15px', }}>
-                     <ListItemButton
-                        sx={{
-                           margin: '10px 15px 0',
-                           borderRadius: '4px',
-                           padding: '8px 24px',
-                           color: 'white',
-                           backgroundColor: '#00acc1',
-                           '&:focus': {backgroundColor: '#00acc1'},
-                           '&:active': {backgroundColor: '#00acc1'},
-                           '&:hover' : {backgroundColor: '#00acc1'}
-                        }}
-                     >
-                        <ListItemIcon sx={{color: 'inherit'}}>
-                           <UnarchiveIcon />
-                        </ListItemIcon>
-                        <ListItemText primary='Upgrade To PRO' primaryTypographyProps={{fontSize: 14, fontWeight: 'medium'}} />
-                     </ListItemButton>
-                  </Link>
+            <Link to={'/upgrade'} style={{textDecoration: 'none', color: 'inherit', position: 'absolute', bottom: '15px'}}>
+               <ListItemButton
+                  sx={{
+                     margin: '10px 15px 0',
+                     borderRadius: '4px',
+                     padding: '8px 24px',
+                     color: 'white',
+                     backgroundColor: '#00acc1',
+                     '&:focus': {backgroundColor: '#00acc1'},
+                     '&:active': {backgroundColor: '#00acc1'},
+                     '&:hover': {backgroundColor: '#00acc1'},
+                  }}
+               >
+                  <ListItemIcon sx={{color: 'inherit'}}>
+                     <UnarchiveIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Upgrade To PRO' primaryTypographyProps={{fontSize: 14, fontWeight: 'medium'}} />
+               </ListItemButton>
+            </Link>
          </Paper>
       </Box>
    )
 }
-
-
