@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
-import { styleBox, styleContainer } from '../Types/sx'
-import { childrenProps } from '../Types/interface'
+import { styleBox, styleContainer } from '../../Types/sx'
+import { childrenProps } from '../../Types/interface'
 
 
 export const ColorBlock: React.FC<childrenProps> = ({ boxChildren, containerChild, yourStyleBox, yourStyleContainer }) => {
