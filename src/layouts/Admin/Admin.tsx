@@ -1,17 +1,22 @@
 import { Box, Grid } from "@mui/material";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Header from "../../components/Sidebar/Header/Header";
+import Header from "../../components/Header/Header";
+import Footer from '../../components/Footer/Footer'
+
 
 function Admin() {
   return (
     <Box sx={{flexGrow: 1}}>
       <Grid container>
-        <Grid item xs={3}>
+        <Grid item xs={2}>
           <Sidebar />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={10}>
           <Header />
-          <h1>Admin</h1>
+          {/* <h1>Admin</h1> */}
+          {/* <h1>Admin</h1> */}
+          {/* <h1>Admin</h1> */}
+          <Footer/>
         </Grid>
       </Grid>
     </Box>
