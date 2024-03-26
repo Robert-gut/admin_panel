@@ -1,0 +1,23 @@
+.MuiMenuItem-root.Header-Menu-MenuItem {
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 13px;
+    border-radius: 2px;
+    color: #333;
+}
+
+.MuiMenuItem-root.Header-Menu-MenuItem:hover {
+    background-color: #9c27b0;
+    color: #fff;
+    box-shadow: 0px 0px 4px #9c27b0;
+    transition: all 350ms ease 0s;
+}
+
+.MuiButton-root.Header-Menu-SearchBtn {
+    background-color: '#fff';
+    color: #999;
+    max-width: '41px';
+    min-width: '41px';
+    border-radius: '50%';
+    box-shadow: '0px 0px 15px lightgrey';
+}
