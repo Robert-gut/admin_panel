@@ -15,7 +15,6 @@ import Link from '@mui/material/Link';
 import ButtonBase from '@mui/material/ButtonBase';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import './Header.css'
 
@@ -153,7 +152,7 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ backgroundColor: '#eee', color: '#555', padding: '5px 0' }}>
+      <AppBar position="static" sx={{ backgroundColor: '#eee', color: '#555', padding: '2px 0' }}>
         <Toolbar>
           <ButtonBase sx={{ borderRadius: '3px' }}>
             <Link
