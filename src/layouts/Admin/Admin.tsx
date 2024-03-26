@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import Footer from '../../components/Footer/Footer'
-
+import UserProfile from '../../pages/user-profile/profile'
 
 function Admin() {
   return (
@@ -13,9 +13,7 @@ function Admin() {
         </Grid>
         <Grid item xs={10}>
           <Header />
-          {/* <h1>Admin</h1> */}
-          {/* <h1>Admin</h1> */}
-          {/* <h1>Admin</h1> */}
+          <UserProfile />
           <Footer/>
         </Grid>
       </Grid>

@@ -10,7 +10,6 @@ function App() {
       <Router>
          <Routes>
             <Route path='/admin' element={<Admin />}>
-
             </Route>
             <Route path='/' element={<Login />} />
             <Route path='/reset-password' element={<ResetPassword />} />
