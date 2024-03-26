@@ -8,10 +8,10 @@ function Admin() {
   return (
     <Box sx={{flexGrow: 1}}>
       <Grid container>
-        <Grid item xs={2}>
+        <Grid item style={{width: "290px"}}>
           <Sidebar />
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs>
           <Header />
           {/* <h1>Admin</h1> */}
           {/* <h1>Admin</h1> */}
