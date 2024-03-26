@@ -7,25 +7,16 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { Box, ButtonGroup, Grid, Modal, Typography } from "@mui/material";
+import { ColorButton, actionBtnAllUser, actionBtnAllUserModal, iconUsersAllUsers, stBoxAllUsers, stBoxModalWindow, stContainerAllUsers } from "../../Types/sx";
+import { useState } from "react";
+import GroupIcon from '@mui/icons-material/Group';
+
 export const AllUsers = () => {
-   const styles = {
-      width: '80%',
+   const [open, setOpen] = useState(false);
+   const handleOpen = () => setOpen(true);
+   const handleClose = () => setOpen(false);
 
-   }
-   const styles1 = {
-      backgroundColor: Color.Orange,
-      width: '20%',
-   }
-
-
-
-   // const rows = [
-   //    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-   //    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-   //    createData('Eclair', 262, 16.0, 24, 6.0),
-   //    createData('Cupcake', 305, 3.7, 67, 4.3),
-   //    createData('Gingerbread', 356, 16.0, 49, 3.9),
-   // ];
    const usersData = [
       {
          firstName: 'John',
@@ -131,14 +122,14 @@ export const AllUsers = () => {
 
 
    return (
-      <ColorBlock yourStyleBox={styles} yourStyleContainer={styles1} boxChildren={
+      <ColorBlock yourStyleBox={stBoxAllUsers} yourStyleContainer={stContainerAllUsers} boxChildren={
          <div>
             <TableContainer component={Paper} sx={{ boxShadow: 'none' }}
             >
                <Table sx={{ minWidth: 650 }} aria-label="simple table">
                   <TableHead>
                      <TableRow>
-                        {['User', 'Email', 'Phone', 'Roles', 'Activated', ''].map((label) => (
+                        {['User', 'Email', 'Phone', 'Roles', 'Activated', 'Action'].map((label) => (
                            <TableCell key={label} sx={{ color: Color.Orange }} align={label === 'User' ? "left" : "center"}>
                               {label}
                            </TableCell>
@@ -161,16 +152,51 @@ export const AllUsers = () => {
                            <TableCell align="center">{user.roles}</TableCell>
                            <TableCell align="center">{user.isActivated ? 'Yes' : 'No'}</TableCell>
                            <TableCell align="center">
-
+                              <ButtonGroup
+                                 variant="outlined"
+                                 aria-label="Loading 
+                                 button group"
+                              >
+                                 <ColorButton sx={actionBtnAllUser} typecolor={Color.BlurOrange} typecolorhover={Color.Orange}>Edit</ColorButton>
+                                 <ColorButton onClick={handleOpen} sx={actionBtnAllUser} typecolor={Color.BlurOrange} typecolorhover={Color.Orange}>Delete</ColorButton>
+                              </ButtonGroup>
                            </TableCell>
                         </TableRow>
                      ))}
                   </TableBody>
                </Table>
             </TableContainer>
+            <Modal
+               open={open}
+               onClose={handleClose}
+               aria-labelledby="modal-modal-title"
+               aria-describedby="modal-modal-description"
+               sx={{ backdropFilter: 'blur(3px)' }}
+            >
+               <Box sx={stBoxModalWindow}>
+                  <Typography id="modal-modal-title" variant="h6" component="h2">
+                     Do you really want to make changes?
+                  </Typography>
+                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                     If you press this, it will delete the user!
+                  </Typography>
+                  <ButtonGroup
+                     variant="outlined"
+                     aria-label="Loading 
+                                 button group"
+                  >
+                     <ColorButton onClick={handleClose} sx={actionBtnAllUserModal} typecolor={Color.MediumSilver} typecolorhover={Color.LiteSilver}>Close</ColorButton>
+                     <ColorButton sx={actionBtnAllUserModal} typecolor={Color.Brown} typecolorhover={Color.BlurBrown}>Delete</ColorButton>
+                  </ButtonGroup>
+               </Box>
+            </Modal>
          </div >
       } containerChild={
-         < h1 > Users</ h1>
+         <Grid display='flex'
+            alignItems='center'>
+            <h2> Users</h2>
+            <GroupIcon sx={iconUsersAllUsers} />
+         </Grid>
       }></ColorBlock >
    )
 }
