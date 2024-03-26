@@ -1,192 +1,127 @@
-import { useState } from 'react';
-import Box from '@mui/material/Box';
-import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
-import Divider from '@mui/material/Divider';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Paper from '@mui/material/Paper';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import ArrowRight from '@mui/icons-material/ArrowRight';
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import Home from '@mui/icons-material/Home';
-import Settings from '@mui/icons-material/Settings';
-import People from '@mui/icons-material/People';
-import PermMedia from '@mui/icons-material/PermMedia';
-import Dns from '@mui/icons-material/Dns';
-import Public from '@mui/icons-material/Public';
+import {Link} from 'react-router-dom'
+import {styled} from '@mui/material/styles'
+
+import Box from '@mui/material/Box'
+import Paper from '@mui/material/Paper'
+import Divider from '@mui/material/Divider'
+import List from '@mui/material/List'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import bgImage from '../../img/bgMui.jpg'
+
+// Icons
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import PersonIcon from '@mui/icons-material/Person'
+import ContentPasteIcon from '@mui/icons-material/ContentPaste'
+import ScatterPlotIcon from '@mui/icons-material/ScatterPlot'
+import ArticleIcon from '@mui/icons-material/Article'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import LanguageIcon from '@mui/icons-material/Language'
+import UnarchiveIcon from '@mui/icons-material/Unarchive'
 
 const data = [
-  { icon: <People />, label: 'Authentication' },
-  { icon: <Dns />, label: 'Database' },
-  { icon: <PermMedia />, label: 'Storage' },
-  { icon: <Public />, label: 'Hosting' },
-];
+   {icon: <DashboardIcon />, label: 'Dashboard', path: '/admin'},
+   {icon: <PersonIcon />, label: 'User Profile', path: '/user-profile'},
+   {icon: <ContentPasteIcon />, label: 'Table List', path: '/table-list'},
+   {icon: <ArticleIcon />, label: 'Typography', path: '/typography'},
+   {icon: <ScatterPlotIcon />, label: 'Icons', path: '/icons'},
+   {icon: <LocationOnIcon />, label: 'Maps', path: '/maps'},
+   {icon: <NotificationsIcon />, label: 'Notifications', path: '/notifications'},
+   {icon: <LanguageIcon />, label: 'RTL Support', path: '/rtl-support'},
+]
 
-const FireNav = styled(List)<{ component?: React.ElementType }>({
-  '& .MuiListItemButton-root': {
-    paddingLeft: 24,
-    paddingRight: 24,
-  },
-  '& .MuiListItemIcon-root': {
-    minWidth: 0,
-    marginRight: 16,
-  },
-  '& .MuiSvgIcon-root': {
-    fontSize: 20,
-  },
-});
+const FireNav = styled(List)<{component?: React.ElementType}>({
+   '& .MuiListItemButton-root': {
+      paddingLeft: 24,
+      paddingRight: 24,
+   },
+   '& .MuiListItemIcon-root': {
+      minWidth: 0,
+      marginRight: 16,
+   },
+   '& .MuiSvgIcon-root': {
+      fontSize: 24,
+   },
+})
 
-export default function Sidebar(){
-  const [open, setOpen] = useState(true);
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <ThemeProvider
-        theme={createTheme({
-          components: {
-            MuiListItemButton: {
-              defaultProps: {
-                disableTouchRipple: true,
-              },
-            },
-          },
-          palette: {
-            mode: 'dark',
-            primary: { main: 'rgb(102, 157, 246)' },
-            background: { paper: 'rgb(5, 30, 52)' },
-          },
-        })}
-      >
-        <Paper elevation={0} sx={{ maxWidth: 256 }}>
-          <FireNav component="nav" disablePadding>
-            <ListItemButton component="a" href="#customized-list">
-              <ListItemIcon sx={{ fontSize: 20 }}>🔥</ListItemIcon>
-              <ListItemText
-                sx={{ my: 0 }}
-                primary="Firebash"
-                primaryTypographyProps={{
-                  fontSize: 20,
-                  fontWeight: 'medium',
-                  letterSpacing: 0,
-                }}
-              />
-            </ListItemButton>
-            <Divider />
-            <ListItem component="div" disablePadding>
-              <ListItemButton sx={{ height: 56 }}>
-                <ListItemIcon>
-                  <Home color="primary" />
-                </ListItemIcon>
-                <ListItemText
-                  primary="Project Overview"
-                  primaryTypographyProps={{
-                    color: 'primary',
-                    fontWeight: 'medium',
-                    variant: 'body2',
-                  }}
-                />
-              </ListItemButton>
-              <Tooltip title="Project Settings">
-                <IconButton
-                  size="large"
+export default function Sidebar() {
+   return (
+      <Box sx={{display: 'flex', height: '100vh', position: 'fixed', width: '320px'}}>
+         <Paper
+            elevation={0}
+            sx={{
+               position: 'relative',
+               borderRadius: 0,
+               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.7)), url(${bgImage})`,
+               backgroundSize: 'cover',
+               backgroundPosition: 'center',
+            }}
+         >
+            <FireNav component='nav' disablePadding>
+               <ListItemButton component='a' href='#customized-list' sx={{width: '260px', padding: '15px'}}>
+                  <ListItemIcon sx={{fontSize: 20}}>
+                     <img
+                        src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png'
+                        width={20}
+                        height={20}
+                     />
+                  </ListItemIcon>
+                  <ListItemText
+                     sx={{my: 0, p: '5px 0px'}}
+                     primary='CREATIVE TEAM'
+                     primaryTypographyProps={{
+                        fontSize: 18,
+                        fontWeight: 'medium',
+                        letterSpacing: 0,
+                        color: 'white',
+                     }}
+                  />
+               </ListItemButton>
+
+               <Divider variant='middle' sx={{backgroundColor: 'grey'}} />
+               <Box sx={{}}>
+                  {data.map((item) => (
+                     <Link key={item.label} to={item.path} style={{textDecoration: 'none', color: 'inherit'}}>
+                        <ListItemButton
+                           sx={{
+                              margin: '10px 15px 0',
+                              borderRadius: '4px',
+                              padding: '8px 24px',
+                              color: 'white',
+
+                              '&:focus': {backgroundColor: '#00acc1'},
+                              '&:active': {backgroundColor: '#00acc1'},
+                           }}
+                        >
+                           <ListItemIcon sx={{color: 'inherit'}}>{item.icon}</ListItemIcon>
+                           <ListItemText primary={item.label} primaryTypographyProps={{fontSize: 14, fontWeight: 'medium'}} />
+                        </ListItemButton>
+                     </Link>
+                  ))}
+               </Box>
+            </FireNav>
+            <Link to={'/upgrade'} style={{textDecoration: 'none', color: 'inherit', position: 'absolute', bottom: '15px'}}>
+               <ListItemButton
                   sx={{
-                    '& svg': {
-                      color: 'rgba(255,255,255,0.8)',
-                      transition: '0.2s',
-                      transform: 'translateX(0) rotate(0)',
-                    },
-                    '&:hover, &:focus': {
-                      bgcolor: 'unset',
-                      '& svg:first-of-type': {
-                        transform: 'translateX(-4px) rotate(-20deg)',
-                      },
-                      '& svg:last-of-type': {
-                        right: 0,
-                        opacity: 1,
-                      },
-                    },
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      height: '80%',
-                      display: 'block',
-                      left: 0,
-                      width: '1px',
-                      bgcolor: 'divider',
-                    },
+                     margin: '10px 15px 0',
+                     borderRadius: '4px',
+                     padding: '8px 24px',
+                     color: 'white',
+                     backgroundColor: '#00acc1',
+                     '&:focus': {backgroundColor: '#00acc1'},
+                     '&:active': {backgroundColor: '#00acc1'},
+                     '&:hover': {backgroundColor: '#00acc1'},
                   }}
-                >
-                  <Settings />
-                  <ArrowRight sx={{ position: 'absolute', right: 4, opacity: 0 }} />
-                </IconButton>
-              </Tooltip>
-            </ListItem>
-            <Divider />
-            <Box
-              sx={{
-                bgcolor: open ? 'rgba(71, 98, 130, 0.2)' : null,
-                pb: open ? 2 : 0,
-              }}
-            >
-              <ListItemButton
-                alignItems="flex-start"
-                onClick={() => setOpen(!open)}
-                sx={{
-                  px: 3,
-                  pt: 2.5,
-                  pb: open ? 0 : 2.5,
-                  '&:hover, &:focus': { '& svg': { opacity: open ? 1 : 0 } },
-                }}
-              >
-                <ListItemText
-                  primary="Build"
-                  primaryTypographyProps={{
-                    fontSize: 15,
-                    fontWeight: 'medium',
-                    lineHeight: '20px',
-                    mb: '2px',
-                  }}
-                  secondary="Authentication, Firestore Database, Realtime Database, Storage, Hosting, Functions, and Machine Learning"
-                  secondaryTypographyProps={{
-                    noWrap: true,
-                    fontSize: 12,
-                    lineHeight: '16px',
-                    color: open ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.5)',
-                  }}
-                  sx={{ my: 0 }}
-                />
-                <KeyboardArrowDown
-                  sx={{
-                    mr: -1,
-                    opacity: 0,
-                    transform: open ? 'rotate(-180deg)' : 'rotate(0)',
-                    transition: '0.2s',
-                  }}
-                />
-              </ListItemButton>
-              {open &&
-                data.map((item) => (
-                  <ListItemButton
-                    key={item.label}
-                    sx={{ py: 0, minHeight: 32, color: 'rgba(255,255,255,.8)' }}
-                  >
-                    <ListItemIcon sx={{ color: 'inherit' }}>
-                      {item.icon}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={item.label}
-                      primaryTypographyProps={{ fontSize: 14, fontWeight: 'medium' }}
-                    />
-                  </ListItemButton>
-                ))}
-            </Box>
-          </FireNav>
-        </Paper>
-      </ThemeProvider>
-    </Box>
-)}
-
-// export default Sidebar
+               >
+                  <ListItemIcon sx={{color: 'inherit'}}>
+                     <UnarchiveIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Upgrade To PRO' primaryTypographyProps={{fontSize: 14, fontWeight: 'medium'}} />
+               </ListItemButton>
+            </Link>
+         </Paper>
+      </Box>
+   )
+}
