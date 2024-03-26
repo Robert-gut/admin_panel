@@ -37,7 +37,7 @@ export const ResetPassword = () => {
          setSnackbarData({ open: true, error: false });
 
          setTimeout(() => {
-            navigate('/logIn')
+            navigate('/')
          }, 3000);
 
          console.log('✌️values --->', values);
@@ -78,7 +78,7 @@ export const ResetPassword = () => {
                      </Form>
                   )}
                </Formik>
-               <Link style={linkStyles} to='/logIn'>Go to login?</Link>
+               <Link style={linkStyles} to='/'>Go to login?</Link>
 
             </div>
          } yourStyleBox={stBoxResetPassword} containerChild={<h2>Reset Password</h2>} />

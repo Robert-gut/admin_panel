@@ -9,28 +9,11 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import bgImage from '../../img/bgMui.jpg'
-
-// Icons
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import PersonIcon from '@mui/icons-material/Person'
-import ContentPasteIcon from '@mui/icons-material/ContentPaste'
-import ScatterPlotIcon from '@mui/icons-material/ScatterPlot'
-import ArticleIcon from '@mui/icons-material/Article'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import LanguageIcon from '@mui/icons-material/Language'
 import UnarchiveIcon from '@mui/icons-material/Unarchive'
 
-const data = [
-   {icon: <DashboardIcon />, label: 'Dashboard', path: '/admin'},
-   {icon: <PersonIcon />, label: 'User Profile', path: '/user-profile'},
-   {icon: <ContentPasteIcon />, label: 'Table List', path: '/table-list'},
-   {icon: <ArticleIcon />, label: 'Typography', path: '/typography'},
-   {icon: <ScatterPlotIcon />, label: 'Icons', path: '/icons'},
-   {icon: <LocationOnIcon />, label: 'Maps', path: '/maps'},
-   {icon: <NotificationsIcon />, label: 'Notifications', path: '/notifications'},
-   {icon: <LanguageIcon />, label: 'RTL Support', path: '/rtl-support'},
-]
+
+
+import {data, IAdminRoute} from '../../routes'
 
 const FireNav = styled(List)<{component?: React.ElementType}>({
    '& .MuiListItemButton-root': {
@@ -82,8 +65,8 @@ export default function Sidebar() {
 
                <Divider variant='middle' sx={{backgroundColor: 'grey'}} />
                <Box sx={{}}>
-                  {data.map((item) => (
-                     <Link key={item.label} to={item.path} style={{textDecoration: 'none', color: 'inherit'}}>
+                  {data.map((item: IAdminRoute) => (
+                     <Link key={item.name} to={item.path} style={{textDecoration: 'none', color: 'inherit'}}>
                         <ListItemButton
                            sx={{
                               margin: '10px 15px 0',
@@ -96,7 +79,7 @@ export default function Sidebar() {
                            }}
                         >
                            <ListItemIcon sx={{color: 'inherit'}}>{item.icon}</ListItemIcon>
-                           <ListItemText primary={item.label} primaryTypographyProps={{fontSize: 14, fontWeight: 'medium'}} />
+                           <ListItemText primary={item.name} primaryTypographyProps={{fontSize: 14, fontWeight: 'medium'}} />
                         </ListItemButton>
                      </Link>
                   ))}
