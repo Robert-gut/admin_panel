@@ -8,12 +8,13 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, ButtonGroup, Grid, Pagination, Stack } from "@mui/material";
-import { ColorButton, actionBtnAllUser, actionBtnAllUserModal, iconUsersAllUsers, stBoxAllUsers, stBoxTableAndStackAllUsers, stContainerAllUsers } from "../../Types/sx";
+import { ColorButton, actionBtnAllUser, actionBtnAllUserModal, addPerson, addPersonBox, iconUsersAllUsers, stBoxAllUsers, stBoxTableAndStackAllUsers, stContainerAllUsers } from "../../Types/sx";
 import { useState } from "react";
 import GroupIcon from '@mui/icons-material/Group';
 import { User } from "../../Types/interface";
 import { CustomModalWindow } from "../../components/CustomModalWindow/CustomModalWindow";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { Link } from "react-router-dom";
 export const AllUsers = () => {
 
    const usersData: User[] = [
@@ -230,13 +231,17 @@ export const AllUsers = () => {
       console.log(userId);
    }
 
-   const stUserIconBox = {
-      display: 'flex',
-      alignItems: 'center'
-   }
+
+
    return (
       <ColorBlock yourStyleBox={stBoxAllUsers} yourStyleContainer={stContainerAllUsers} boxChildren={
          <div>
+            <Box sx={addPersonBox}>
+               <Link to='/'>
+                  <PersonAddIcon sx={addPerson} />
+               </Link>
+            </Box>
+
             <TableContainer component={Paper} sx={{ boxShadow: 'none' }}
             >
                <Box sx={stBoxTableAndStackAllUsers}>
@@ -252,22 +257,25 @@ export const AllUsers = () => {
                      </TableHead>
                      <TableBody>
                         {usersData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((user) => (
-                           <TableRow key={user.firstName} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+
+                           <TableRow
+                              onClick={() => onChange(user.id)}
+                              key={user.firstName} sx={{
+                                 cursor: 'pointer',
+                                 '&:last-child td, &:last-child th': { border: 0 }, '&:hover': {
+                                    textDecoration: 'underline',
+                                    color: Color.Orange
+                                 }
+
+                              }
+
+                              }>
                               {['firstName', 'email', 'phone', 'roles', 'isActivated'].map((field, index) => (
                                  <TableCell
                                     key={field}
                                     align={index === 0 ? "left" : "center"}
-                                    sx={{ width: '16%' }}
                                  >
-                                    {field === 'firstName' ? (
-                                       <Box sx={stUserIconBox}>
-                                          <AccountCircleIcon /> {user.firstName.charAt(0)} {user.lastName}
-                                       </Box>
-                                    ) : (
-                                       field === 'isActivated' ? (user.isActivated ? 'Yes' : 'No') : user[field as keyof User]
-                                    )}
-
-
+                                    {field === 'firstName' ? `${user.firstName} ${user.lastName}` : field === 'isActivated' ? (user.isActivated ? 'Yes' : 'No') : user[field as keyof User]}
                                  </TableCell>
                               ))}
 
@@ -304,11 +312,11 @@ export const AllUsers = () => {
             </TableContainer>
          </div >
       } containerChild={
-         <Grid display='flex'
-            alignItems='center'>
+         < Grid display='flex'
+            alignItems='center' >
             <h2> Users</h2>
             <GroupIcon sx={iconUsersAllUsers} />
-         </Grid>
+         </ Grid>
       }></ColorBlock >
    )
 }
