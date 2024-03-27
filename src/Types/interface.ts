@@ -7,6 +7,7 @@ export interface childrenProps {
    yourStyleContainer?: React.CSSProperties;
 }
 
+
 export interface IUser {
    email: string;
    password?: string;
@@ -15,4 +16,16 @@ export interface IUser {
 export interface ColorButtonProps extends ButtonProps {
    typecolor: string;
    typecolorhover: string;
+}
+
+export interface User {
+   id: number;
+   firstName: string;
+   lastName: string;
+   email: string;
+   isActivated: boolean;
+   password: string;
+   sex: string;
+   phone: string;
+   roles: string[];
 }

@@ -27,7 +27,6 @@ export const styleContainer = {
    'bottom': '65px'
 }
 
-
 export const avatarStylesUser = {
    backgroundColor: Color.Blue,
    width: '70px',
@@ -44,8 +43,6 @@ export const avatarStylesResetPassword = {
    marginTop: '-30px',
    boxShadow: 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset'
 };
-
-
 
 export const ColorButton = styled(Button)<ColorButtonProps>(({ typecolor, typecolorhover }) => ({
    backgroundColor: typecolor,
@@ -68,7 +65,6 @@ export const stContainerLogin = {
    'backgroundColor': Color.Blue
 };
 
-
 export const linkStyles = {
    margin: '25px 0',
    color: Color.Silver,
@@ -76,4 +72,52 @@ export const linkStyles = {
    '&:hover': {
       backgroundColor: 'black',
    },
+};
+
+export const stBoxAllUsers = {
+   width: '80%',
+   marginBottom: '100px'
+}
+export const stContainerAllUsers = {
+   backgroundColor: Color.Orange,
+   width: '20%',
+}
+export const actionBtnAllUser = {
+   color: Color.White,
+   border: `1px solid ${Color.Orange}`,
+   '&:hover': {
+      border: `1px solid ${Color.Orange}`,
+   },
+}
+export const actionBtnAllUserModal = {
+   color: Color.White,
+   border: '0',
+   '&:hover': {
+      border: '0',
+   },
+}
+
+export const iconUsersAllUsers = {
+   fontSize: '35px',
+   marginLeft: '10px'
+}
+
+export const stBoxModalWindow = {
+   position: 'absolute' as 'absolute',
+   top: '50%',
+   left: '50%',
+   transform: 'translate(-50%, -50%)',
+   width: '30%',
+   bgcolor: 'background.paper',
+   boxShadow: 24,
+   p: 4,
+   borderRadius: '15px',
+   border: `2px solid ${Color.Silver}`,
+};
+
+export const stBoxTableAndStackAllUsers = {
+   height: '530px',
+   display: 'flex',
+   flexDirection: 'column',
+   justifyContent: 'space-between'
 };
