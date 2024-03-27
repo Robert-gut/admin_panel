@@ -10,6 +10,7 @@ import LanguageIcon from '@mui/icons-material/Language'
 
 // pages
 import Login from './pages/Login/Login'
+// import addNewUser from './pages/addNewUser/addNewUser'
 
 export interface IAdminRoute {
   path: string
@@ -26,6 +27,12 @@ export const data: IAdminRoute[] = [
     icon: <DashboardIcon />,
     component: <Login/>
   },
+  // {
+  //   path: '/add-new-user',
+  //   name: 'Add new User',
+  //   icon: <DashboardIcon />,
+  //   component: <addNewUser />
+  // },
   {
     path: '/user-profile',
     name: 'User Profile',

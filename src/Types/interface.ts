@@ -12,7 +12,20 @@ export interface IUser {
    password?: string;
 }
 
+export interface INewUser {
+   firstName: string, 
+   lastName: string,
+   email: string, 
+   password: string,
+   confirmPassword: string,
+   sex: string,
+   phone: string,
+   roles: string, 
+}
+
 export interface ColorButtonProps extends ButtonProps {
    typecolor: string;
    typecolorhover: string;
 }
+
+

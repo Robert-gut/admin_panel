@@ -30,6 +30,7 @@ const Footer = () => {
                width: '100%',
                background: '#eee',
                p: 2,
+               zIndex: 3,
             }}
          >
             <Stack direction='row' spacing={{xs: 2, md: 8}}>

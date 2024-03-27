@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import Footer from '../../components/Footer/Footer'
-
+import AddNewUser from "../../pages/AddNewUser/AddNewUser";
 
 function Admin() {
   return (
@@ -16,6 +16,7 @@ function Admin() {
           {/* <h1>Admin</h1> */}
           {/* <h1>Admin</h1> */}
           {/* <h1>Admin</h1> */}
+            <AddNewUser />
           <Footer/>
         </Grid>
       </Grid>
