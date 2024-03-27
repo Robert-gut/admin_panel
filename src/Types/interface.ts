@@ -7,6 +7,7 @@ export interface childrenProps {
    yourStyleContainer?: React.CSSProperties;
 }
 
+
 export interface IUser {
    email: string;
    password?: string;
@@ -18,6 +19,7 @@ export interface ColorButtonProps extends ButtonProps {
 }
 
 export interface User {
+   id: number;
    firstName: string;
    lastName: string;
    email: string;

@@ -112,5 +112,12 @@ export const stBoxModalWindow = {
    boxShadow: 24,
    p: 4,
    borderRadius: '15px',
-   border: `3px solid ${Color.Silver}`,
+   border: `2px solid ${Color.Silver}`,
+};
+
+export const stBoxTableAndStackAllUsers = {
+   height: '530px',
+   display: 'flex',
+   flexDirection: 'column',
+   justifyContent: 'space-between'
 };
