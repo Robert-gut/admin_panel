@@ -16,3 +16,14 @@ export interface ColorButtonProps extends ButtonProps {
    typecolor: string;
    typecolorhover: string;
 }
+
+export interface User {
+   firstName: string;
+   lastName: string;
+   email: string;
+   isActivated: boolean;
+   password: string;
+   sex: string;
+   phone: string;
+   roles: string[];
+}

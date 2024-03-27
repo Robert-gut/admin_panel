@@ -76,6 +76,7 @@ export const linkStyles = {
 
 export const stBoxAllUsers = {
    width: '80%',
+   marginBottom: '100px'
 }
 export const stContainerAllUsers = {
    backgroundColor: Color.Orange,
