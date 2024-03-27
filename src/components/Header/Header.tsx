@@ -1,61 +1,65 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Input from '@mui/material/Input';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import PersonIcon from '@mui/icons-material/Person';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import MenuIcon from '@mui/icons-material/Menu';
-import Link from '@mui/material/Link';
-import ButtonBase from '@mui/material/ButtonBase';
-import Divider from '@mui/material/Divider';
-import Button from '@mui/material/Button';
-import SearchIcon from '@mui/icons-material/Search';
+import * as React from 'react'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import Input from '@mui/material/Input'
+import Badge from '@mui/material/Badge'
+import MenuItem from '@mui/material/MenuItem'
+import Menu from '@mui/material/Menu'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import Link from '@mui/material/Link'
+import ButtonBase from '@mui/material/ButtonBase'
+import Divider from '@mui/material/Divider'
+import Button from '@mui/material/Button'
+
+//icons
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import PersonIcon from '@mui/icons-material/Person'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import MenuIcon from '@mui/icons-material/Menu'
+import SearchIcon from '@mui/icons-material/Search'
+
+//styles
 import './Header.css'
 
 const ariaLabel = { 'aria-label': 'searchInput' }
 
 export default function Header() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [notificationsEl, setNotificationsEl] = React.useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [notificationsEl, setNotificationsEl] = React.useState<null | HTMLElement>(null)
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null)
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isNotificationsOpen = Boolean(notificationsEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isMenuOpen = Boolean(anchorEl)
+  const isNotificationsOpen = Boolean(notificationsEl)
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleNotificationsOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setNotificationsEl(event.currentTarget);
-  };
+    setNotificationsEl(event.currentTarget)
+  }
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
+    setMobileMoreAnchorEl(event.currentTarget)
+  }
 
   const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
+    setAnchorEl(null)
+    handleMobileMenuClose()
+  }
 
   const handleNotificationsClose = () => {
-    setNotificationsEl(null);
-    handleMobileMenuClose();
-  };
+    setNotificationsEl(null)
+    handleMobileMenuClose()
+  }
 
   const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
+    setMobileMoreAnchorEl(null)
+  }
 
-  const menuId = 'search-account-menu';
+  const menuId = 'search-account-menu'
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -79,7 +83,7 @@ export default function Header() {
     </Menu>
   )
 
-  const mobileMenuId = 'search-account-menu-mobile';
+  const mobileMenuId = 'search-account-menu-mobile'
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -123,9 +127,9 @@ export default function Header() {
         <p>Profile</p>
       </MenuItem>
     </Menu>
-  );
+  )
 
-  const notificationsMenuId = 'notifications-menu';
+  const notificationsMenuId = 'notifications-menu'
   const renderNotificationsMenu = (
     <Menu
       anchorEl={notificationsEl}
@@ -148,7 +152,7 @@ export default function Header() {
       <MenuItem className='Header-Menu-MenuItem' onClick={handleNotificationsClose}>Another Notification</MenuItem>
       <MenuItem className='Header-Menu-MenuItem' onClick={handleNotificationsClose}>Another One</MenuItem>
     </Menu>
-  );
+  )
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -159,7 +163,7 @@ export default function Header() {
               href='#'
               underline='none'
               variant="h6"
-              sx={{ display: { xs: 'none', sm: 'block', color: 'inherit', padding: '12px 30px', borderRadius: '3px' } }}
+              sx={{ display: { xs: 'none', sm: 'block' }, color: 'inherit', padding: '12px 30px', borderRadius: '3px' }}
             >
               Dashboard
             </Link>
@@ -222,5 +226,5 @@ export default function Header() {
       {renderNotificationsMenu}
       {renderMenu}
     </Box>
-  );
+  )
 }

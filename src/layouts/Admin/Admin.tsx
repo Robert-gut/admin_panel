@@ -6,17 +6,14 @@ import Footer from '../../components/Footer/Footer'
 
 function Admin() {
   return (
-    <Box sx={{flexGrow: 1}}>
-      <Grid container>
-        <Grid item style={{width: "290px"}}>
-          <Sidebar />
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Grid container sx={{ flexGrow: 1 }}>
+        <Grid item style={{ width: "260px" }}>
+          <Sidebar/>
         </Grid>
-        <Grid item xs>
+        <Grid item xs sx={{ display: 'flex', flexDirection: 'column' }}>
           <Header />
-          {/* <h1>Admin</h1> */}
-          {/* <h1>Admin</h1> */}
-          {/* <h1>Admin</h1> */}
-          <Footer/>
+          <Footer />
         </Grid>
       </Grid>
     </Box>
