@@ -7,17 +7,15 @@ import { AllUsers } from "../../pages/all-users/allUsers";
 
 function Admin() {
    return (
-      <Box sx={{ flexGrow: 1 }}>
-         <Grid container>
-            <Grid item xs={2}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+         <Grid container sx={{ flexGrow: 1 }}>
+            <Grid item style={{ width: "260px" }}>
                <Sidebar />
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs sx={{ display: 'flex', flexDirection: 'column' }}>
                <Header />
                <AllUsers />
-               {/* <h1>Admin</h1> */}
-               {/* <h1>Admin</h1> */}
-               {/* <h1>Admin</h1> */}
+
                <Footer />
             </Grid>
          </Grid>

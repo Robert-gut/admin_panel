@@ -48,7 +48,7 @@ const FireNav = styled(List)<{ component?: React.ElementType }>({
 
 export default function Sidebar() {
    return (
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, position: 'fixed', width: '260px' }}>
          <Paper
             elevation={0}
             sx={{
@@ -57,7 +57,8 @@ export default function Sidebar() {
                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.7)), url(${bgImage})`,
                backgroundSize: 'cover',
                backgroundPosition: 'center',
-               height: '100vh'
+               height: '100vh',
+               width: '100%',
             }}
          >
             <FireNav component='nav' disablePadding>
@@ -82,7 +83,7 @@ export default function Sidebar() {
                </ListItemButton>
 
                <Divider variant='middle' sx={{ backgroundColor: 'grey' }} />
-               <Box sx={{}}>
+               <Box sx={{ height: 'calc(100vh - 75px)', overflowY: 'auto',  position: 'relative'}}>
                   {data.map((item) => (
                      <Link key={item.label} to={item.path} style={{ textDecoration: 'none', color: 'inherit' }}>
                         <ListItemButton
@@ -103,7 +104,7 @@ export default function Sidebar() {
                   ))}
                </Box>
             </FireNav>
-            <Link to={'/upgrade'} style={{ textDecoration: 'none', color: 'inherit', position: 'absolute', bottom: '15px', width: '100%' }}>
+            <Link to={'/upgrade'} style={{ textDecoration: 'none', color: 'inherit', position: 'absolute', bottom: '15px', width: 'auto' }}>
                <ListItemButton
                   sx={{
                      margin: '10px 15px 0',

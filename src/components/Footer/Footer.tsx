@@ -1,6 +1,6 @@
-import {BottomNavigation, BottomNavigationAction, Stack, Typography, Box} from '@mui/material'
-import {Home, Apartment, ViewDay, MenuBook} from '@mui/icons-material'
-import {Link} from 'react-router-dom'
+import { BottomNavigation, BottomNavigationAction, Stack, Typography, Box } from '@mui/material'
+import { Home, Apartment, ViewDay, MenuBook } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
 
 interface NavItem {
    to: string
@@ -10,29 +10,25 @@ interface NavItem {
 
 const Footer = () => {
    const navItems: NavItem[] = [
-      {to: '/', label: 'Home', icon: <Home />},
-      {to: '/company', label: 'Company', icon: <Apartment />},
-      {to: '/portfolio', label: 'Portfolio', icon: <ViewDay />},
-      {to: '/blog', label: 'Blog', icon: <MenuBook />},
+      { to: '/', label: 'Home', icon: <Home /> },
+      { to: '/company', label: 'Company', icon: <Apartment /> },
+      { to: '/portfolio', label: 'Portfolio', icon: <ViewDay /> },
+      { to: '/blog', label: 'Blog', icon: <MenuBook /> },
    ]
 
    return (
-      <footer>
+      <footer style={{ position: 'relative', bottom: 0 }}>
          <BottomNavigation
             sx={{
-               justifyContent: 'center',
-               flexDirection: 'column',
-               gap: '15px',
+               justifyContent: 'space-between',
                alignItems: 'center',
                borderTop: '1px solid #D3D3D3',
-               position: 'fixed',
                bottom: 0,
-               width: '100%',
                background: '#eee',
-               p: 2,
+               p: 1,
             }}
          >
-            <Stack direction='row' spacing={{xs: 2, md: 8}}>
+            <Stack direction='row' spacing={2}>
                {navItems.map((item, index) => (
                   <BottomNavigationAction
                      key={index}
@@ -43,11 +39,10 @@ const Footer = () => {
                      label={item.label}
                      sx={{
                         '&:hover': {
-                           color: '#6b6b92',
-                           fontWeight: 'bold',
+                           color: '#9c27b0',
                            transition: 'all .5s',
                         },
-                        color: '#455f7b',
+                        color: '#3c4858',
                         textTransform: 'uppercase',
                      }}
                   />
@@ -55,8 +50,12 @@ const Footer = () => {
             </Stack>
 
             <Box>
-               <Typography sx={{fontSize: {lg: '12px', xs: '10px'}, color: '#455f7b'}}>
-                  ©2024 Creative Tim made with love for a better web
+               <Typography component='p' sx={{ fontSize: { lg: '14px', xs: '10px' }, color: '#3c4858' }}>
+                  ©2024{' '}
+                  <Link to='https://www.creative-tim.com/?ref=mdr-footer&_ga=2.128611082.727702646.1711479330-801148342.1711124746' style={{ textDecoration: 'none' }}>
+                     Creative Tim,
+                  </Link>{' '}
+                  made with love for a better web
                </Typography>
             </Box>
          </BottomNavigation>
