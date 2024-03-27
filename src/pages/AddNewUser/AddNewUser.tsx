@@ -1,9 +1,9 @@
 import {useState} from 'react'
 import {ColorBlock} from '../../components/ColorBlock/ColorBlock'
-import {Alert, Avatar, CircularProgress, Grid, Select, FormControl, InputLabel, MenuItem, FormHelperText} from '@mui/material'
-import {Form, Formik, FormikHelpers, Field, ErrorMessage} from 'formik'
+import {Alert, Avatar, Snackbar, Grid, Select, FormControl, InputLabel, MenuItem, FormHelperText, } from '@mui/material'
+import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
-import {Link, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {ColorButton, avatarStylesUser, stBoxLogin, stContainerLogin} from '../../Types/sx'
 import {INewUser} from '../../Types/interface'
 import {CustomInput} from '../../components/CustomInput/CustomInput'
@@ -11,6 +11,20 @@ import {Color, ColorHover} from '../../Types/enum'
 import {MuiTelInput} from 'mui-tel-input'
 
 const AddNewUser = () => {
+   const navigate = useNavigate()
+
+   const [snackbarData, setSnackbarData] = useState<{open: boolean; error: boolean}>({open: false, error: false})
+   const handleClose = () => {
+      setSnackbarData({...snackbarData, open: false})
+   }
+
+   const [phoneValue, setPhoneValue] = useState('')
+   const handleChangePhone = (newValue: string) => {
+      setPhoneValue(newValue.replace(/\s/g, ''))
+   }
+
+
+
    const initialValues: INewUser = {
       firstName: '',
       lastName: '',
@@ -52,25 +66,41 @@ const AddNewUser = () => {
 
       password: yup
          .string()
-         .required('Password is required')
          .min(8, 'Password must be at least 8 characters long')
          .max(32, 'Password cannot be more than 32 characters')
-         .matches(/[a-zA-Zа-яА-Я]/, 'Password must contain at least one letter'),
+         .matches(/[a-zA-Zа-яА-Я]/, 'Password must contain at least one letter')
+         .matches(/\d/, 'Password must contain at least one digits')
+         .matches(/[^\w\s]/, 'Password must contain at least one special character')
+         .required('Password is required'),
 
       confirmPassword: yup
          .string()
-         .required('Passwords must match')
-         .oneOf([yup.ref('password')], 'Passwords must match'),
+         .oneOf([yup.ref('password')], 'Passwords must match')
+         .required('Passwords must match'),
 
       sex: yup.string().oneOf(['man', 'woman', 'other'], 'Invalid sex').required('Sex is required'),
 
       roles: yup.string().oneOf(['user', 'admin', 'manager'], 'Invalid role').required('Roles is required'),
    })
 
-   const onSubmit = (values: INewUser): void => {
+   const onSubmit = (values: INewUser, {setSubmitting}: {setSubmitting: (isSubmitting: boolean) => void}): void => {
       try {
+         if (!values) return
          const {confirmPassword, ...newUserData} = values
-         console.log(newUserData)
+
+         const request: number = 200
+         if (newUserData && request === 200) {
+            setSnackbarData({open: true, error: false})
+            console.log(newUserData) //! Масив з данними нового юзера
+            setTimeout(() => {
+               navigate('/')
+            }, 2000)
+         } else {
+            setSnackbarData({open: true, error: true})
+            setTimeout(() => {
+               setSubmitting(false)
+            }, 2000)
+         }
       } catch (error) {
          console.error('Помилка під час обробки форми:', error)
       }
@@ -83,11 +113,6 @@ const AddNewUser = () => {
 
    const selectStyle = {
       margin: '16px 0px 8px 0px',
-   }
-
-   const [phoneValue, setPhoneValue] = useState('')
-   const handleChangePhone = (newValue: string) => {
-      setPhoneValue(newValue.replace(/\s/g, ''))
    }
 
    return (
@@ -190,6 +215,18 @@ const AddNewUser = () => {
                </div>
             }
          />
+         <div>
+            <Snackbar open={snackbarData.open} autoHideDuration={2000} onClose={handleClose}>
+               <Alert
+                  onClose={handleClose}
+                  severity={snackbarData.error ? 'error' : 'success'}
+                  variant='filled'
+                  sx={{width: '100%', backgroundColor: snackbarData.error ? 'red' : 'green'}}
+               >
+                  {snackbarData.error ? 'Помилка при обробці данних нового користувача!' : 'Новий користувач добавлений!'}
+               </Alert>
+            </Snackbar>
+         </div>
       </div>
    )
 }
