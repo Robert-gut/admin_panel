@@ -155,7 +155,7 @@ export default function Header() {
   )
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static" sx={{ backgroundColor: '#eee', color: '#555', padding: '2px 0' }}>
         <Toolbar>
           <ButtonBase sx={{ borderRadius: '3px' }}>

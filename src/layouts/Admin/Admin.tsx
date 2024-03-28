@@ -3,6 +3,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
 import Footer from '../../components/Footer/Footer'
 import { AllUsers } from "../../pages/all-users/allUsers";
+import EditProfile from "../../pages/EditProfile/EditProfile";
 
 
 function Admin() {
@@ -14,8 +15,10 @@ function Admin() {
             </Grid>
             <Grid item xs sx={{ display: 'flex', flexDirection: 'column' }}>
                <Header />
-               <AllUsers />
-
+               <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
+                  {/* <AllUsers /> */}
+                  <EditProfile />
+               </Box>
                <Footer />
             </Grid>
          </Grid>

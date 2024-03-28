@@ -48,7 +48,7 @@ const FireNav = styled(List)<{ component?: React.ElementType }>({
 
 export default function Sidebar() {
    return (
-      <Box sx={{ flexGrow: 1, position: 'fixed', width: '260px' }}>
+      <Box sx={{ position: 'fixed', width: '260px' }}>
          <Paper
             elevation={0}
             sx={{
