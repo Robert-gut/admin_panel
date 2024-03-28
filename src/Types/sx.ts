@@ -121,3 +121,20 @@ export const stBoxTableAndStackAllUsers = {
    flexDirection: 'column',
    justifyContent: 'space-between'
 };
+
+export const addPerson = {
+   width: 50,
+   height: 50,
+   color: Color.Orange,
+   transition: 'all .1s linear',
+   cursor: 'pointer',
+   '&:hover': {
+      transform: 'scale(1.1)'
+   }
+}
+export const addPersonBox = {
+   marginBottom: '-30px',
+   textAlign: 'end',
+   position: 'relative',
+   bottom: '100px'
+}
