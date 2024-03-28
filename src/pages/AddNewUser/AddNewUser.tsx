@@ -10,7 +10,6 @@ import {CustomInput} from '../../components/CustomInput/CustomInput'
 import {Color, ColorHover} from '../../Types/enum'
 import {MuiTelInput} from 'mui-tel-input'
 
-
 const AddNewUser = () => {
    const navigate = useNavigate()
 
@@ -34,7 +33,6 @@ const AddNewUser = () => {
       sex: '',
       roles: '',
    }
-
 
    const validationSchema = yup.object({
       firstName: yup
@@ -82,7 +80,6 @@ const AddNewUser = () => {
       roles: yup.string().oneOf(['user', 'admin', 'manager'], 'Invalid role').required('Roles is required'),
    })
 
-   
    const onSubmit = (values: INewUser, {setSubmitting}: {setSubmitting: (isSubmitting: boolean) => void}): void => {
       try {
          if (!values) return
@@ -135,69 +132,60 @@ const AddNewUser = () => {
                            <CustomInput name='password' label='Password' type='password' />
                            <CustomInput name='confirmPassword' label='Confirm password' type='password' />
 
-                           <Field name='phone' >
-                              {({form}: any) => (
-                                 <div>
-                                    <MuiTelInput
-                                       fullWidth
-                                       value={phoneValue}
-                                       onChange={(newValue: string) => {
-                                          handleChangePhone(newValue)
-                                          form.setFieldValue('phone', newValue.replace(/\s/g, ''))
-                                       }}
-                                       onBlur={() => form.setFieldTouched('phone', true)}
-                                       sx={selectStyle}
-                                       error={form.errors.phone && form.touched.phone}
-                                    />
-                                    {form.errors.phone && form.touched.phone && (
-                                       <FormHelperText error sx={{margin: '-6px 0px 6px 0px'}}>
-                                          {form.errors.phone}
-                                       </FormHelperText>
-                                    )}
-                                 </div>
-                              )}
-                           </Field>
+                           <MuiTelInput
+                                fullWidth
+                                value={phoneValue}
+                                onChange={(newValue: string) => {
+                                   handleChangePhone(newValue)
+                                   props.setFieldValue('phone', newValue.replace(/\s/g, ''))
+                                }}
+                                onBlur={() => props.setFieldTouched('phone', true)}
+                                sx={selectStyle}
+                                error={!!props.errors.phone && props.touched.phone}
+                             />
+                           {!!props.errors.phone && props.touched.phone && (
+                              <FormHelperText error sx={{margin: '-6px 0px 6px 0px'}}>
+                                 {props.errors.phone}
+                              </FormHelperText>
+                           )}
+  
 
                            <Field name='sex' as={FormControl} fullWidth>
-                              {({form}: any) => (
-                                 <FormControl fullWidth error={form.errors.sex && form.touched.sex} sx={selectStyle}>
-                                    <InputLabel id='sexSelectl'>Sex</InputLabel>
-                                    <Select
-                                       labelId='sexSelect'
-                                       label='Sex'
-                                       onChange={(e) => form.setFieldValue('sex', e.target.value)}
-                                       onBlur={() => form.setFieldTouched('sex', true)}
-                                    >
-                                       <MenuItem value='man'>Man</MenuItem>
-                                       <MenuItem value='woman'>Woman</MenuItem>
-                                       <MenuItem value='other'>Other</MenuItem>
-                                    </Select>
-                                    <FormHelperText sx={{marginLeft: '0px'}}>
-                                       <ErrorMessage name='sex' />
-                                    </FormHelperText>
-                                 </FormControl>
-                              )}
+                              <FormControl fullWidth error={!!props.errors.sex && props.touched.sex} sx={selectStyle}>
+                                 <InputLabel id='sexSelectl'>Sex</InputLabel>
+                                 <Select
+                                    labelId='sexSelect'
+                                    label='Sex'
+                                    onChange={(e) => props.setFieldValue('sex', e.target.value)}
+                                    onBlur={() => props.setFieldTouched('sex', true)}
+                                 >
+                                    <MenuItem value='man'>Man</MenuItem>
+                                    <MenuItem value='woman'>Woman</MenuItem>
+                                    <MenuItem value='other'>Other</MenuItem>
+                                 </Select>
+                                 <FormHelperText sx={{marginLeft: '0px'}}>
+                                    <ErrorMessage name='sex' />
+                                 </FormHelperText>
+                              </FormControl>
                            </Field>
 
                            <Field name='roles' as={FormControl} fullWidth>
-                              {({form}: any) => (
-                                 <FormControl fullWidth error={form.errors.roles && form.touched.roles} sx={selectStyle}>
-                                    <InputLabel id='roleSelectl'>Roles</InputLabel>
-                                    <Select
-                                       labelId='rolesSelect'
-                                       label='Roles'
-                                       onChange={(e) => form.setFieldValue('roles', e.target.value)}
-                                       onBlur={() => form.setFieldTouched('roles', true)}
-                                    >
-                                       <MenuItem value='user'>User</MenuItem>
-                                       <MenuItem value='manager'>Manager</MenuItem>
-                                       <MenuItem value='admin'>Admin</MenuItem>
-                                    </Select>
-                                    <FormHelperText sx={{marginLeft: '0px'}}>
-                                       <ErrorMessage name='roles' />
-                                    </FormHelperText>
-                                 </FormControl>
-                              )}
+                              <FormControl fullWidth error={!!props.errors.roles && props.touched.roles} sx={selectStyle}>
+                                 <InputLabel id='roleSelectl'>Roles</InputLabel>
+                                 <Select
+                                    labelId='rolesSelect'
+                                    label='Roles'
+                                    onChange={(e) => props.setFieldValue('roles', e.target.value)}
+                                    onBlur={() => props.setFieldTouched('roles', true)}
+                                 >
+                                    <MenuItem value='user'>User</MenuItem>
+                                    <MenuItem value='manager'>Manager</MenuItem>
+                                    <MenuItem value='admin'>Admin</MenuItem>
+                                 </Select>
+                                 <FormHelperText sx={{marginLeft: '0px'}}>
+                                    <ErrorMessage name='roles' />
+                                 </FormHelperText>
+                              </FormControl>
                            </Field>
 
                            <ColorButton
