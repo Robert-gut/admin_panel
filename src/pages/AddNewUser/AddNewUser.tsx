@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {ColorBlock} from '../../components/ColorBlock/ColorBlock'
-import {Alert, Avatar, Snackbar, Grid, Select, FormControl, InputLabel, MenuItem, FormHelperText, } from '@mui/material'
+import {Alert, Avatar, Snackbar, Grid, Select, FormControl, InputLabel, MenuItem, FormHelperText} from '@mui/material'
 import {Form, Formik, Field, ErrorMessage} from 'formik'
 import * as yup from 'yup'
 import {useNavigate} from 'react-router-dom'
@@ -9,6 +9,7 @@ import {INewUser} from '../../Types/interface'
 import {CustomInput} from '../../components/CustomInput/CustomInput'
 import {Color, ColorHover} from '../../Types/enum'
 import {MuiTelInput} from 'mui-tel-input'
+
 
 const AddNewUser = () => {
    const navigate = useNavigate()
@@ -23,8 +24,6 @@ const AddNewUser = () => {
       setPhoneValue(newValue.replace(/\s/g, ''))
    }
 
-
-
    const initialValues: INewUser = {
       firstName: '',
       lastName: '',
@@ -36,7 +35,7 @@ const AddNewUser = () => {
       roles: '',
    }
 
-   //* валідація
+
    const validationSchema = yup.object({
       firstName: yup
          .string()
@@ -83,6 +82,7 @@ const AddNewUser = () => {
       roles: yup.string().oneOf(['user', 'admin', 'manager'], 'Invalid role').required('Roles is required'),
    })
 
+   
    const onSubmit = (values: INewUser, {setSubmitting}: {setSubmitting: (isSubmitting: boolean) => void}): void => {
       try {
          if (!values) return
@@ -135,7 +135,7 @@ const AddNewUser = () => {
                            <CustomInput name='password' label='Password' type='password' />
                            <CustomInput name='confirmPassword' label='Confirm password' type='password' />
 
-                           <Field name='phone'>
+                           <Field name='phone' >
                               {({form}: any) => (
                                  <div>
                                     <MuiTelInput
